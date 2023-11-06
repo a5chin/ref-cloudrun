@@ -9,6 +9,7 @@ import (
 
 type IngredientRepository interface {
 	GetIngredients(ctx context.Context, min, max *uint) ([]*entity.Ingredient, error)
+	UpdateIngredients(ctx context.Context, ingredientId string, weight uint) error
 }
 
 type NutritionRepository interface {
