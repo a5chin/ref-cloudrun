@@ -12,7 +12,6 @@ FROM debian:buster-slim
 
 WORKDIR /go/bin
 
-COPY ./config/.env ./config/.env
 COPY --from=builder /go/bin/server ./server
 
 ENTRYPOINT ["/go/bin/server"]
