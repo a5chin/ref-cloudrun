@@ -18,7 +18,7 @@ import (
 // @description	ref
 // @version		1.0
 func main() {
-	conf := config.Load("./config/.env")
+	conf := config.Load()
 	db := driver.NewDB(conf)
 
 	ingredientRepository := repository.NewIngredientRepository()
