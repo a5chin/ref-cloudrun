@@ -34,18 +34,18 @@ func main() {
 	app := gin.Default()
 	app.Use(middleware.Transaction(db))
 
-	app.GET("/", func(ctx *gin.Context) {
+	app.GET("", func(ctx *gin.Context) {
 		ctx.String(http.StatusOK, "It works")
 	})
 
 	api := app.Group("/api/v1")
 
 	ingredientRouter := api.Group("/ingredients")
-	ingredientRouter.GET("/", handleResponse(ingredientController.GetIngredients))
+	ingredientRouter.GET("", handleResponse(ingredientController.GetIngredients))
 	ingredientRouter.PUT("/:ingredientId", handleResponse(ingredientController.UpdateIngredients))
 
 	nutritionRouter := api.Group("/nutritions")
-	nutritionRouter.GET("/", handleResponse(nutritionController.GetNutritions))
+	nutritionRouter.GET("", handleResponse(nutritionController.GetNutritions))
 	nutritionRouter.GET("/:nutritionId", handleResponse(nutritionController.GetNutritionByID))
 
 	runApp(app, conf)
